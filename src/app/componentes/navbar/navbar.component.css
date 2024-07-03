@@ -1,0 +1,45 @@
+nav {
+  display: flex;
+  justify-content:baseline;
+ 
+  padding: 0;
+  align-items: center;
+
+}
+
+.logo-asper {
+  width: 150px;
+  height: 55px;
+  margin-right: 130px;
+  margin-left: 2.8rem;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  gap: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+nav li a {
+  display: flex;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav li a:hover {
+  background-color: rgba(103, 104, 101, 0.54);
+  border-radius: 12px;
+  cursor: pointer;
+}
+

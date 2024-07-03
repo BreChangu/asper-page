@@ -1,0 +1,58 @@
+section{
+    border: 2px white solid;
+    display: flex;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    border: 3px solid salmon;
+        
+}
+
+.encabezado1{
+    border: 3px solid blue;
+    margin-top: -1.6rem;
+}
+.encabezado{
+    border: 1px rgb(166, 255, 0) solid;
+    display: flex;
+    color: aqua;
+    
+
+}
+
+.parrafo{
+    border: 2px solid navajowhite;
+    margin-top: 8rem;
+
+}
+
+.parrafo1{
+ columns: 1;
+ line-height: 2.2rem;
+ font-size: 1.3rem;
+}
+.info{
+    display: flex;
+    align-items: baseline;
+    border: 1px rgb(0, 255, 221) solid;
+    flex-direction: column;
+    height: auto;
+    color: wheat;
+}
+
+.nosotros{
+    width: 83.33%;
+    align-items:left;
+    margin-left: 30px;
+    border: 3px rgb(238, 255, 0) solid;
+    color: blue;
+    
+}
+
+.foto-nosotros{
+   border-radius: 20px;
+    align-items: center;
+}

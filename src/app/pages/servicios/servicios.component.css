@@ -1,0 +1,42 @@
+.section {
+    border: 1px red solid;
+    height: 100vh;
+}
+
+.servicios {
+    border: 2px white solid;
+    display: flex;
+    flex-wrap: wrap; /* Añadido para que los elementos se envuelvan */
+    padding: 8px;
+    height: 100%;
+    box-sizing: border-box; /* Añadido para que el padding no afecte el tamaño total */
+}
+
+.service-item {
+    color: wheat;
+    border: 1px rebeccapurple solid;
+    margin: 8px;
+    background-image: url(/assets/imagenes/grafico-datos.jpg);
+    background-size: contain;
+    width: calc(100% / 2 - 16px); /* Divide en 3 columnas y resta el margen */
+    height: 25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Añadido para que el contenido se alinee verticalmente */
+    justify-content: center; /* Añadido para que el contenido se alinee verticalmente */
+    align-items: center; /* Añadido para que el contenido se alinee horizontalmente */
+    border-radius: 20px;
+    box-shadow: orangered;
+}
+
+@media (max-width: 1024px) {
+    .service-item {
+        width: calc(100% / 2 - 16px); /* Divide en 2 columnas y resta el margen */
+    }
+}
+
+@media (max-width: 768px) {
+    .service-item {
+        width: calc(100% - 16px); /* Toma el ancho completo y resta el margen */
+    }
+}
