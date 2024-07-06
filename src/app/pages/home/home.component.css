@@ -1,142 +1,269 @@
-
-h1{
-    display: flex;
-    justify-content: center;
-    margin: 2.2rem 0rem 0rem 0rem;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 3.2rem;
-    z-index: 9;
-    text-wrap: balance;
-    line-height: 4rem;
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.introduccion{
-    border: 2px red solid;
-    width: 50%;
-    height: 30%;
-    margin-top: 2rem;
-    color: rgb(255, 255, 255);
+/* General Styles */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background-color: #121212;
+}
+
+h1 {
     display: flex;
+    justify-content: center;
+    margin: 2.2rem 0 0 0;
+    color: white;
+    font-size: 3.2rem;
+    /* z-index: 9; */
+    line-height: 4rem;
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.introduccion {
+    width: 50%;
+    margin: 4rem auto 0 auto;
+    color: rgb(255, 255, 255);
     font-size: 1.8rem;
     text-align: center;
-    justify-content: center;
     line-height: 2rem;
-    align-items: center;
-    margin-bottom: 0;
     text-wrap: balance;
+    animation: fadeIn 2s ease-in-out 0.5s;
+    animation-fill-mode: forwards;
 }
 
-.valor{
+.container-home {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(/assets/imagenes/pipol.jpg);
+    background-size:100%;
+    border-radius: 4px;
+    /* animation: zoomIn 2s ease-in-out; */
+}
+
+.banner {
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(245, 242, 242, 0));
+    border-radius: 4px;
+    height: 100vh;
     display: flex;
-    border:1px solid red;
-    margin-top: 1.4rem;
-    color: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.valor {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-image: linear-gradient(to right, rgba(61, 60, 60,0.4), rgba(245, 242, 242, 0));
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 8px;
+    max-width: 100vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s ease-in-out;
+}
+
+.foto-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.valor p {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    margin-right: 2rem;
+    text-align: justify;
+    width: 55%;
+}
+
+.foto2 {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.foto2:hover {
+    transform: scale(1.05);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+ .valor2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-image: linear-gradient(to left, rgba(61, 60, 60,0.4), rgba(245, 242, 242, 0));
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 8px;
+    max-width: 100vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s ease-in-out;
+
+ }
+
+ .valor2 p {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    margin-right: 2rem;
+    text-align: justify;
+    text-wrap: balance;
+    width: 55%;
+}
+
+.foto3 {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.foto3:hover {
+    transform: scale(1.05);
+}
+
+
+
+ .valor3{
+    border: purple 4px solid;
+ }
+
+
+.valor, .valor2, .valor3 {
+    display: flex;
+    align-items: center;
+    margin: 1.4rem .4rem;
+    color: wheat;
     font-size: 1.8rem;
     line-height: 2.4rem;
-    text-align: center;
+    text-align: left;
     text-wrap: balance;
-    
-
+    animation: slideUp 2s ease-in-out;
 }
 
-.valor p{
-    columns: 1;
-    text-wrap: balance;
-}
-
-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin-top:2.5rem;
-    padding: 0;
-  }
-.container-home{
-
-    margin-top: 0rem;
-    border: 1px red solid;
-    height: 100vh;
-    width:100vw;
-    background-image:url(/assets/imagenes/asper-banner.jpeg);
-    /* background-blend-mode: color-burn; */
-    background-size: cover;
+.valor img, .valor2 img, .valor3 img {
+    max-width: auto;
+    height: auto;
     border-radius: 4px;
-    margin-left: 0;
-    
-
+    margin-top: 1.4rem;
+    transition: transform 0.1s ease-in-out;
 }
 
-.banner{
-    
-background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(245, 242, 242, 0));
-border-radius: 4px;
-border: 2px pink solid;
-height: 100vh;
-
+.valor img:hover, .valor2 img:hover, .valor3 img:hover {
+    transform: scale(1.05);
 }
 
-.titulo{
-    border: 2px royalblue solid;
-    margin-top: 1.3rem;
-    display: flex;
-    flex-wrap: wrap ;
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: 1.2rem;
-    align-items: center;
-    text-align: center;
-    
-    }
-
-
-    .encabezado{
-        display: flex;
-    margin-bottom:0;
-    color: aliceblue;
-    font-size: 1.2rem;
-    height: 50vh;
-
-    }
-
-
-    .parrafo{
-        display: grid;
-        grid-template-columns: auto;
-        height: auto;
-        border: 1px rgb(63, 180, 39) solid;
-        color: rgb(255, 255, 255);
-        display: flex;
-        flex-wrap: wrap;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 2.2rem;
-        line-height: 2.3rem;
-        margin-top:-120px ;
-        columns: 2;
-
-    }
-
-
-.foto2{
-    background-size: contain;
-}
-
-
-.valor2{
-    display: flex;
+.valor2, .valor3 {
     flex-direction: row-reverse;
 }
 
-.valor2 p{
+.valor2 p, .valor3 p {
     color: wheat;
-    text-justify: distribute-all-lines;
     font-size: 1.8rem;
     line-height: 2.2rem;
-    display: flex;
-    text-align: center;
+    margin-left: .4rem;
+    padding: 1.4rem;
+    border: #fff 3px solid;
 }
 
-.foto3{
-    border: 1px yellow solid;
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* @keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+    }
+    to {
+        transform: scale(1);
+    }
+} */
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .introduccion, .valor, .valor2, .valor3 {
+        width: 85%;
+    }
+    
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    .introduccion {
+        font-size: 1.7rem;
+    }
+    
+    .valor p, .valor2 p, .valor3 p {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .introduccion, .valor, .valor2, .valor3 {
+        width: 90%;
+    }
+    
+    h1 {
+        font-size: 2.4rem;
+    }
+    
+    .introduccion {
+        font-size: 1.6rem;
+    }
+    
+    .valor p, .valor2 p, .valor3 p {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .introduccion, .valor, .valor2, .valor3 {
+        width: 100%;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .introduccion {
+        font-size: 1.4rem;
+    }
+    
+    .valor p, .valor2 p, .valor3 p {
+        font-size: 1.4rem;
+    }
 }

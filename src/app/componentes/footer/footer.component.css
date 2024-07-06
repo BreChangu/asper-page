@@ -9,16 +9,18 @@
     align-items: center;
     flex-direction: column;
     margin-top: 1.8frem;
+    border: #c71616 2px solid;
   }
   .logo-asper {
-    width: 150px;
-    height: 55px;
+    width: 250px;
+    height: 90px;
     margin-right: 14px;
     margin-left: 2rem;
   }
   
   .social-icon,
   .menu {
+    border: #088d6c 2px solid;
     position: relative;
     display: flex;
     justify-content: center;
@@ -46,13 +48,18 @@
   }
   
   .menu__link:hover {
-    opacity: 1;
+    font-size: 1.4rem;
   }
   
   .footer p {
+    border: #fff 2px solid ;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left:2rem ;
     color: #fff;
     margin: 15px 0 10px 0;
     font-size: 1rem;
     font-weight: 300;
-  }
+  }         
   
