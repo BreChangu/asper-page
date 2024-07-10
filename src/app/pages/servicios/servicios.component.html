@@ -1,10 +1,18 @@
 <section>
     <div class="servicios">
-                <div class="service-item">huevos</div>
-                <div class="service-item">huevos2</div>
-                <div class="service-item">huevos3</div>
-                <div class="service-item">huevos 4 </div>
-
-
+      <div class="service-item" (click)="openModal('Seguridad e Higiene')">Seguridad e Higiene</div>
+      <div class="service-item" (click)="openModal('Calidad ')">Calidad</div>
+      <div class="service-item" (click)="openModal('Ingeniería de Servicios ')">Ingeniería de servicio</div>
+      <div class="service-item" (click)="openModal('Servicios 4 ' )">Servicios 4</div>
     </div>
-</section>
+  </section>
+  
+  <!-- Modal -->
+  <div id="modal" class="modal" [ngClass]="{'show': isModalOpen}">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <p>{{ modalText }}</p>
+      <button class="close-button" (click)="closeModal()">Cerrar</button>
+    </div>
+  </div>
+  

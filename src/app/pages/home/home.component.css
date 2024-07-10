@@ -40,7 +40,8 @@ h1 {
     height: 100vh;
     width: 100vw;
     background-image: url(/assets/imagenes/pipol.jpg);
-    background-size:100%;
+    background-size:cover;
+    background-repeat: no-repeat;
     border-radius: 4px;
     /* animation: zoomIn 2s ease-in-out; */
 }

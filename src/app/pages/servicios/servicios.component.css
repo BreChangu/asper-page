@@ -1,42 +1,119 @@
-.section {
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Section Styles */
+  .section {
     border: 1px red solid;
     height: 100vh;
-}
-
-.servicios {
+  }
+  
+  .servicios {
     border: 2px white solid;
     display: flex;
-    flex-wrap: wrap; /* Añadido para que los elementos se envuelvan */
+    flex-wrap: wrap;
     padding: 8px;
     height: 100%;
-    box-sizing: border-box; /* Añadido para que el padding no afecte el tamaño total */
-}
-
-.service-item {
+    box-sizing: border-box;
+  }
+  
+  .service-item {
     color: wheat;
     border: 1px rebeccapurple solid;
     margin: 8px;
     background-image: url(/assets/imagenes/grafico-datos.jpg);
-    background-size: contain;
-    width: calc(100% / 2 - 16px); /* Divide en 3 columnas y resta el margen */
+    background-size: cover;
+    background-position: center;
+    width: calc(50% - 16px);
     height: 25rem;
     text-align: center;
     display: flex;
-    flex-direction: column; /* Añadido para que el contenido se alinee verticalmente */
-    justify-content: center; /* Añadido para que el contenido se alinee verticalmente */
-    align-items: center; /* Añadido para que el contenido se alinee horizontalmente */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 20px;
-    box-shadow: orangered;
-}
-
-@media (max-width: 1024px) {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .service-item:hover {
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 1024px) {
     .service-item {
-        width: calc(100% / 2 - 16px); /* Divide en 2 columnas y resta el margen */
+      width: calc(50% - 16px);
     }
-}
-
-@media (max-width: 768px) {
+  }
+  
+  @media (max-width: 768px) {
     .service-item {
-        width: calc(100% - 16px); /* Toma el ancho completo y resta el margen */
+      width: calc(100% - 16px);
     }
-}
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal.show {
+    display: block;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .close-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .close-button:hover {
+    background-color: #45a049;
+  }
+  

@@ -1,12 +1,23 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-servicios',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './servicios.component.html',
-  styleUrl: './servicios.component.css'
+  styleUrls: ['./servicios.component.css']
 })
 export class ServiciosComponent {
+  isModalOpen = false;
+  modalText = '';
 
+  openModal(service: string): void {
+    this.modalText = `Información detallada sobre ${service}`;
+    this.isModalOpen = true;
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+  }
 }
