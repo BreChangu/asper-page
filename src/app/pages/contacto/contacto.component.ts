@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ContactService } from '../../servicios/contact.service';
 
 @Component({
   selector: 'app-contacto',
   standalone: true,
-  imports: [NgIf, FormsModule],
+  imports: [NgIf, FormsModule,HttpClientModule],
   templateUrl: './contacto.component.html',
   styleUrls: ['./contacto.component.css']
 })

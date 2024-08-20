@@ -68,6 +68,15 @@ h1 {
     animation: fadeIn 2s ease-in-out;
 }
 
+.valor h3 {
+    display: block; /* Asegúrate de que el h3 es un bloque */
+    width: 100%; /* Ocupa el 100% del ancho del contenedor padre */
+    text-align: center; /* Centra el texto dentro del h3 */
+    margin-bottom: 1rem; /* Añade un margen inferior para separar del párrafo siguiente */
+}
+
+
+
 .foto-container {
     width: 50%;
     display: flex;

@@ -173,3 +173,24 @@ Branded promotional products can be a cost-effective advertising tool compared t
 
 Value
 Branded promotional products have a higher perceived value than other forms of advertising, such as flyers and online ads. This can lead to increased customer engagement and interest in your brand.
+
+
+
+
+
+
+
+.valor{
+  border: 2px wheat solid;
+  background-image: linear-gradient(to left, rgb(0, 0, 0), rgba(245, 242, 242, 0));
+  flex-direction: row;
+
+  
+}
+
+
+
+.foto2{
+  border:plum 3px solid;
+
+}
