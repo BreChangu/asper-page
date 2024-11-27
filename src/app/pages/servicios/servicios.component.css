@@ -24,11 +24,11 @@
     box-sizing: border-box;
   }
   
-  .service-item {
+  .service-item-seguridad {
     color: wheat;
     border: 1px rebeccapurple solid;
     margin: 8px;
-    background-image: url(/assets/imagenes/grafico-datos.jpg);
+    background-image: url(/assets/imagenes/seguridad.png);
     background-size: cover;
     background-position: center;
     width: calc(50% - 16px);
@@ -42,10 +42,100 @@
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
   }
-  
-  .service-item:hover {
-    transform: scale(1.05);
+  .service-item-calidad {
+    color: wheat;
+    border: 1px rebeccapurple solid;
+    margin: 8px;
+    background-image: url(/assets/imagenes/calidad.jpg);
+    background-size: cover;
+    background-position: center;
+    width: calc(50% - 16px);
+    height: 25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
   }
+
+  .service-item-ingenieria {
+    color: wheat;
+    border: 1px rebeccapurple solid;
+    margin: 8px;
+    background-image: url(/assets/imagenes/ingenieria.png);
+    background-size: cover;
+    background-position: center;
+    width: calc(50% - 16px);
+    height: 25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .service-item-servicios{
+    color: wheat;
+    border: 1px rebeccapurple solid;
+    margin: 8px;
+    background-image: url(/assets/imagenes/servicios.jpeg);
+    background-size: cover;
+    background-position: center;
+    width: calc(50% - 16px);
+    height: 25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+
+ 
+  
+  .service-item-seguridad, 
+  .service-item-calidad, 
+  .service-item-ingenieria, 
+  .service-item-servicios {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .service-item-seguridad:hover,
+  .service-item-calidad:hover,
+  .service-item-ingenieria:hover,
+  .service-item-servicios:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: wheat;
+
+  }
+  
+  h1, h2, h3, p {
+    line-height: 1.6;
+  }
+  
+  .service-item-seguridad, 
+  .service-item-calidad, 
+  .service-item-ingenieria, 
+  .service-item-servicios {
+    font-size: 2rem;
+    font-weight: bolder;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    color:black;
+    
+  }
+  
+  
   
   @media (max-width: 1024px) {
     .service-item {
@@ -117,3 +207,23 @@
     background-color: #45a049;
   }
   
+  /* Responsiveness */
+@media (max-width: 1024px) {
+  .service-item {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-item {
+    font-size: 1.2rem;
+    height: 20rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-item {
+    font-size: 1rem;
+    height: 15rem;
+  }
+}
