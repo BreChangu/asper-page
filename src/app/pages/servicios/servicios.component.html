@@ -7,12 +7,17 @@
     </div>
   </section>
   
-  <!-- Modal -->
   <div id="modal" class="modal" [ngClass]="{'show': isModalOpen}">
     <div class="modal-content">
       <span class="close" (click)="closeModal()">&times;</span>
-      <p>{{ modalText }}</p>
+      <h2>{{ modalTitle }}</h2>
+      <ul>
+        <li *ngFor="let item of modalLinks">
+          <a (click)="navigateToPage(item.url)">{{ item.label }}</a>
+        </li>
+      </ul>
       <button class="close-button" (click)="closeModal()">Cerrar</button>
     </div>
   </div>
+  
   
