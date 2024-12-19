@@ -1,145 +1,54 @@
- 
+/* slider.component.css */
+.simple-slider {
+  position: relative;
+  width: 100%;
+  max-width: 100%; /* Asegura que abarque todo el ancho disponible */
+  margin: 0 auto;
+  overflow: hidden;
+}
 
-.split-slideshow {
+.slides {
   display: flex;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-  position: relative;
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer; /* Indica que el elemento es clicable */
 }
 
-.slideshow {
-  width: 50vw;
-  height: 100vh;
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
   position: relative;
-  overflow: hidden;
+  display: none; /* Ocultamos las diapositivas por defecto */
 }
 
-.slider {
+.slide.active {
+  display: block; /* Mostramos solo la diapositiva activa */
+}
+
+.slide img {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  object-fit: cover; /* Hace que la imagen ocupe todo el contenedor sin distorsionarse */
+  display: block; /* Asegura que la imagen abarque todo el ancho */
 }
 
-.slider * {
-  outline: none;
-}
-
-.item {
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-  overflow: hidden;
-  border: none;
-}
-
-.item img {
-  min-width: 101%;
-  min-height: 101%;
+.caption {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.slick-dots {
-  position: fixed;
-  z-index: 100;
-  width: 40px;
-  height: auto;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
+  top: 50%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Centra exactamente en el medio */
   color: #fff;
-  display: block;
-}
-
-.slick-dots li {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.slick-dots li button {
-  position: relative;
-  width: 20px;
-  height: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 5px;
   text-align: center;
+  font-size: 1.5em; /* Ajusta el tamaño del texto */
+  width: 90%; /* Asegura que el texto no se desborde */
 }
 
-.slick-dots li button:before {
-  content: "";
-  background: #fff;
-  color: #fff;
-  height: 2px;
-  width: 20px;
-  border-radius: 0;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  transition: all 0.3s ease-in-out;
-  opacity: 0.6;
-}
-
-.slick-dots li.slick-active button:before {
-  width: 40px;
-  opacity: 1;
-}
-
-.slideshow-right {
-  width: 50vw;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.slideshow-right .slider {
-  width: 100%;
-  height: 100%;
-  left: 0;
-  position: absolute;
-}
-
-.slideshow-text {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-  font-size: 80px;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-weight: 100;
-  pointer-events: none;
-  text-transform: uppercase;
-  letter-spacing: 20px;
-  line-height: 0.8;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-@media (max-width: 767px) {
-  .slideshow-text {
-    font-size: 40px;
+@media (max-width: 768px) {
+  .caption {
+    font-size: 1em; /* Ajusta el tamaño del texto para dispositivos más pequeños */
+    padding: 5px 10px;
+    width: 80%; /* Ajusta el ancho para dispositivos más pequeños */
   }
-}
-
-.the-most {
-  bottom: 0;
-  left: 0%;
-  width: 2000vw;
-  max-width: auto;
-  padding: 10px;
-  border:rgb(192, 12, 12) 3px solid;
-  z-index: 1;
-  height: fit-content;
-}
-
-.the-most img {
-  max-width: 100%;
 }

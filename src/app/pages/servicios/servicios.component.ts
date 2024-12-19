@@ -1,25 +1,32 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-servicios',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './servicios.component.html',
   styleUrls: ['./servicios.component.css']
 })
 export class ServiciosComponent {
   isModalOpen = false;
-  modalText = '';
-  openModal(serviceName: string) {
+  modalTitle = '';
+  modalLinks: { label: string; url: string }[] = []; // Lista de enlaces dinámicos en el modal
+
+  constructor(private router: Router) {}
+
+  openModal(service: string): void {
     this.isModalOpen = true;
 
-    switch (serviceName) {
+    // Configuración del modal según el servicio seleccionado
+    switch (service) {
       case 'Seguridad e Higiene':
         this.modalTitle = 'Seguridad e Higiene';
         this.modalLinks = [
-          { label: 'Plan de Prevención', url: '/seguridad-prevencion' },
-          { label: 'Normas Oficiales', url: '/seguridad-normas' },
+          { label: 'Normas Organizacionales', url: '/normas-organizacionales' },
+          { label: 'Normas de Seguridad', url: '/normas-seguridad' },
           { label: 'Consultoría Especializada', url: '/seguridad-consultoria' }
         ];
         break;
@@ -53,12 +60,12 @@ export class ServiciosComponent {
     }
   }
 
-  closeModal() {
-    this.isModalOpen = false;
+  closeModal(): void {
+    this.isModalOpen = false; // Cierra el modal
   }
 
-  navigateToPage(url: string) {
-    this.closeModal();
-    this.router.navigateByUrl(url);
+  navigateToPage(url: string): void {
+    this.router.navigateByUrl(url); // Redirige a la página correspondiente
+    this.closeModal(); // Cierra el modal antes de navegar (opcional)
   }
 }

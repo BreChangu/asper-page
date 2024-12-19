@@ -227,3 +227,24 @@
     height: 15rem;
   }
 }
+
+
+.modal ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal ul li {
+  margin: 10px 0;
+}
+
+.modal ul li a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.modal ul li a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}

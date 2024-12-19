@@ -1,23 +1,21 @@
 <section>
-    <div class="servicios">
-      <div class="service-item-seguridad" (click)="openModal('Seguridad e Higiene')">   Seguridad e Higiene</div>
-      <div class="service-item-calidad" (click)="openModal('Calidad ')">Calidad</div>
-      <div class="service-item-ingenieria" (click)="openModal('Ingeniería de Servicios ')">Ingeniería de servicio</div>
-      <div class="service-item-servicios" (click)="openModal('Servicios 4 ' )">Servicios 4</div>
-    </div>
-  </section>
-  
-  <div id="modal" class="modal" [ngClass]="{'show': isModalOpen}">
-    <div class="modal-content">
-      <span class="close" (click)="closeModal()">&times;</span>
-      <h2>{{ modalTitle }}</h2>
-      <ul>
-        <li *ngFor="let item of modalLinks">
-          <a (click)="navigateToPage(item.url)">{{ item.label }}</a>
-        </li>
-      </ul>
-      <button class="close-button" (click)="closeModal()">Cerrar</button>
-    </div>
+  <div class="servicios">
+    <div class="service-item-seguridad" (click)="openModal('Seguridad e Higiene')">Seguridad e Higiene</div>
+    <div class="service-item-calidad" (click)="openModal('Calidad')">Calidad</div>
+    <div class="service-item-ingenieria" (click)="openModal('Ingeniería de Servicios')">Ingeniería de Servicios</div>
+    <div class="service-item-servicios" (click)="openModal('Servicios 4')">Servicios 4</div>
   </div>
-  
-  
+</section>
+
+<div id="modal" class="modal" [ngClass]="{ 'show': isModalOpen }">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>{{ modalTitle }}</h2>
+    <ul>
+      <li *ngFor="let item of modalLinks">
+        <a (click)="navigateToPage(item.url)">{{ item.label }}</a>
+      </li>
+    </ul>
+    <button class="close-button" (click)="closeModal()">Cerrar</button>
+  </div>
+</div>
