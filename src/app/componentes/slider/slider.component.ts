@@ -13,8 +13,8 @@ export class SliderComponent implements AfterViewInit, OnDestroy {
   slides = [
     { imageUrl: 'assets/imagenes/seguridad.jpg', caption: 'Seguridad e Higiene' },
     { imageUrl: 'assets/imagenes/calidad.jpg', caption: 'Calidad' },
-    { imageUrl: 'https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-4.jpg', caption: 'Ingeniería de Servicios' },
-    { imageUrl: 'https://raw.githubusercontent.com/supahfunk/supah-codepen/master/canyon-1.jpg', caption: 'Servicios 4' }
+    { imageUrl: 'assets/imagenes/ingenieria.png', caption: 'Ingeniería de Servicios' },
+    { imageUrl: 'assets/imagenes/servicios.jpeg', caption: 'Servicios 4' }
   ];
 
   currentSlide = 0;

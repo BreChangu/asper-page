@@ -22,11 +22,17 @@ body {
   border-top: 2px solid #c71616;
 }
 
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .logo-asper {
   width: 250px;
-  height: 90px;
-  margin-right: 14px;
-  margin-left: 2rem;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
 .social-icon,
@@ -48,11 +54,12 @@ body {
   font-size: 1.5rem;
   color: #fff;
   text-decoration: none;
-  transition: transform 0.3s;
+  transition: transform 0.3s, color 0.3s;
 }
 
 .social-icon__link:hover {
   transform: translateY(-5px);
+  color: #c71616; /* Añadir color de hover */
 }
 
 .menu__item {
@@ -64,9 +71,42 @@ body {
   color: #fff;
   margin: 0 10px;
   display: inline-block;
-  transition: font-size 0.3s;
+  transition: font-size 0.3s, color 0.3s;
   text-decoration: none;
   opacity: 0.75;
   font-weight: 300;
 }
+
+.menu__link:hover {
+  color: #c71616; /* Añadir color de hover */
+  opacity: 1;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .social-icon,
+  .menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-icon__item,
+  .menu__item {
+    margin: 5px 0;
+  }
+
+  .logo-asper {
+    width: 200px;
+    margin-bottom: 1rem;
+  }
+}
+
+
+/*Smooth */
 

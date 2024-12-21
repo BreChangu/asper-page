@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { NormasOrganizacionalesComponent } from './pages/normas-organizacionales/normas-organizacionales.component';
+import { NormasSeguridadComponent } from './pages/normas-seguridad/normas-seguridad.component';
 
 export const routes: Routes = [
     { path: 'navbar', component: NavbarComponent },
@@ -14,5 +15,7 @@ export const routes: Routes = [
     { path: 'nosotros', component: NosotrosComponent },
     { path: 'servicios', component: ServiciosComponent },
     { path: 'contacto', component: ContactoComponent },
-    { path: 'normas-organizacionales', component: NormasOrganizacionalesComponent } 
+    { path: 'normas-organizacionales', component: NormasOrganizacionalesComponent },
+    {path:'normas-seguridad', component:NormasSeguridadComponent}
+
 ];

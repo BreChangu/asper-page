@@ -11,6 +11,10 @@ import { RouterLink } from "@angular/router";
 })
 
 export class NavbarComponent {
+  menuActive:boolean = false;
+  togleMenu():void{
+    this.menuActive= !this.menuActive;
+  }
 
 }
 

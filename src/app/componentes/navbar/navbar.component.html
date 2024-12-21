@@ -1,18 +1,22 @@
+<!-- navbar.component.html -->
 <nav>
-
-    <li>
-        <img
-        class="logo-asper"
-        src=" ../../assets/imagenes/asper-bco.png"
-        alt="Logo"
-        />
-    </li>
-    <ul>
-        <li><a routerLink="" >Home</a></li>
-        <li><a routerLink="/nosotros"> Nosotros </a></li>
-        <li><a routerLink="/servicios" > Servicios</a></li>
-        <!-- <li><a  routerLink="/contacto" > Contacto </a></li> -->
-        <li><a> </a></li>
-      
+    <div class="logo-container">
+      <a routerLink="">
+        <img class="logo-asper" src="../../assets/imagenes/asper-bco.png" alt="Logo">
+      </a>
+    </div>
+  
+    <div class="hamburger" (click)="togleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  
+    <ul class="nav-links" [class.active]="menuActive">
+      <li><a routerLink="">Home</a></li>
+      <li><a routerLink="/nosotros">Nosotros</a></li>
+      <li><a routerLink="/servicios">Servicios</a></li>
+      <!-- <li><a routerLink="/contacto">Contacto</a></li> -->
     </ul>
-</nav>
+  </nav>
+  

@@ -41,6 +41,7 @@
     border-radius: 20px;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+    
   }
   .service-item-calidad {
     color: wheat;
@@ -176,6 +177,7 @@
     max-width: 600px;
     border-radius: 10px;
     text-align: center;
+    
   }
   
   .close {
@@ -231,7 +233,7 @@
 
 .modal ul {
   list-style: none;
-  padding: 0;
+  padding: 3px;
 }
 
 .modal ul li {
@@ -240,11 +242,14 @@
 
 .modal ul li a {
   text-decoration: none;
-  color: #007bff;
+  color: #000205;
   font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0.7rem;
 }
 
 .modal ul li a:hover {
-  text-decoration: underline;
+  text-decoration: none;
   color: #0056b3;
+  cursor: pointer;
 }

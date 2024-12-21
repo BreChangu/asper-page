@@ -1,46 +1,111 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navbar Styles */
 nav {
   display: flex;
-  justify-content:baseline;
- 
-  padding: 0;
+  justify-content: space-between;
   align-items: center;
+  background-color: #333;
+  padding: 0.5rem 1rem;
+}
 
+.logo-container {
+  display: flex;
+  align-items: center;
 }
 
 .logo-asper {
-  width: 250px;
-  height: 90px;
-  margin-right: 130px;
-  margin-left: 2.8rem;
+  width: 200px;
+  height: auto;
 }
 
-nav ul {
+.nav-links {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-  justify-content: space-evenly;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
-  gap: 20px;
   display: flex;
-  width: 100%;
-  justify-content: center;
-  justify-content: space-evenly;
+  gap: 20px;
+  margin-left: auto; /* Para alinear las rutas de navegación al centro */
 }
 
-nav li a {
-  display: flex;
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links li a {
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 10px 15px;
   text-decoration: none;
   font-weight: 500;
+  font-size: 1.4rem;
+  transition: background-color 0.3s, font-size 0.3s;
 }
 
-nav li a:hover {
+.nav-links li a:hover {
   background-color: rgba(103, 104, 101, 0.54);
   border-radius: 12px;
   cursor: pointer;
   font-size: 1.8rem;
 }
 
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 3px 0;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    width: 100%;
+    flex-direction: column;
+    /* background-color: rgba(131, 14, 14, 0.9); Fondo transparente */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 1rem;
+    margin-top: 2.8rem;
+    transition: left 0.3s ease-in-out;
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  .nav-links li {
+    margin:15px 0; /* Espaciado entre elementos */
+  }
+
+  .nav-links li a {
+    background: rgba(155, 11, 11, 0.1); /* Fondo semi-transparente */
+    border-radius: 12px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  .nav-links li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
