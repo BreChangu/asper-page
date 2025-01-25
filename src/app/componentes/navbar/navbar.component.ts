@@ -12,9 +12,21 @@ import { RouterLink } from "@angular/router";
 
 export class NavbarComponent {
   menuActive:boolean = false;
-  togleMenu():void{
+  toggleMenu():void{
     this.menuActive= !this.menuActive;
+    console.log('Menu Active:', this.menuActive);
+    const navLinksElement = document.querySelector('.nav-links');
+  if (navLinksElement) {
+    console.log('Classes:', navLinksElement.classList);
   }
+}
+closeMenu(): void {
+  this.menuActive = false;
+  console.log('Closing menu:', this.menuActive);
+}
 
 }
+
+
+
 

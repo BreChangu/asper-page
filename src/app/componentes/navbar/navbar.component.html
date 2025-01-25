@@ -6,16 +6,16 @@
       </a>
     </div>
   
-    <div class="hamburger" (click)="togleMenu()">
+    <div class="hamburger" (click)="toggleMenu()">
       <div></div>
       <div></div>
       <div></div>
     </div>
   
     <ul class="nav-links" [class.active]="menuActive">
-      <li><a routerLink="">Home</a></li>
-      <li><a routerLink="/nosotros">Nosotros</a></li>
-      <li><a routerLink="/servicios">Servicios</a></li>
+      <li><a routerLink="" (click)="closeMenu()">Home</a></li>
+      <li><a routerLink="/nosotros" (click)="closeMenu()">Nosotros</a></li>
+      <li><a routerLink="/servicios" (click)="closeMenu()">Servicios</a></li>
       <!-- <li><a routerLink="/contacto">Contacto</a></li> -->
     </ul>
   </nav>

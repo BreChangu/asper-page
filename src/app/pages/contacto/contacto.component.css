@@ -1,57 +1,98 @@
+/* Estilos para el botón de contacto (toggle) */
 .contact-toggle {
-  display: flex;
-  flex-wrap: wrap;
   position: fixed;
   right: -70px;
   top: 50%;
+  transform: translateY(-50%) rotate(90deg);
   background-color: #ff5e00;
   color: white;
-  padding: 20px;
+  padding: 15px 20px;
   cursor: pointer;
-  font-size: 2.2rem;
-  font-family:Arial, Helvetica, sans-serif;
-  font-stretch: expanded;
-  border-radius: 10px ;
-  transition: right 0. 6 ease-in;
-  transform: rotate(90deg);
+  font-size: 1.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 10px;
+  transition: right 0.3s ease-in;
+  z-index: 1000;
 }
 
-.contact-toggle:hover{
-    right: -30px;
+.contact-toggle:hover {
+  right: -30px;
 }
 
+/* Hacer el botón responsive */
+@media (max-width: 768px) {
+  .contact-toggle {
+    right: -60px;
+    font-size: 1.6rem;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-toggle {
+    right: -50px;
+    font-size: 1.4rem;
+    padding: 8px 12px;
+  }
+}
+
+/* Estilos para el formulario de contacto */
 .contact-form {
   position: fixed;
+  top: 50%; /* Centra verticalmente en la página */
   right: 0;
-  top: 0;
-  height: 100%;
-  width: 500px;
-  background-color: rgba(10, 10, 10, 0.4);
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
-  padding: 20px;
+  transform: translateY(-50%) translateX(100%); /* Alinea al costado derecho por defecto */
+  height: auto; 
+  width: 80%; 
+  max-width: 500px;
+  background-color: rgba(10, 10, 10, 0.95);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  transform: translateX(100%);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-y: auto;
+  z-index: 2000;
 }
 
-.contact-form.hidden {
-  transform: translateX(100%);
-}
-
+/* Estado visible del formulario */
 .contact-form:not(.hidden) {
-  transform: translateX(0%);
+  transform: translateY(-50%) translateX(0); /* Muestra el formulario */
 }
 
+/* Ajuste del margen superior */
+.form-content {
+  padding: 20px;
+}
+
+/* Botón de cierre */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 2100;
+}
+
+.close-btn:hover {
+  color: #ff5e00;
+}
+
+/* Estilos para los grupos de formulario */
 .form-group {
   margin-bottom: 20px;
 }
 
 .form-group h3 {
   margin-bottom: 10px;
-  font-size: 1.2em;
-  color: #007bff;
+  font-size: 1.4em;
+  color: #ff5e00;
+  text-align: center;
 }
 
+/* Estilos para las etiquetas y campos */
 .form-group div {
   margin-bottom: 10px;
 }
@@ -61,7 +102,6 @@ label {
   margin-bottom: 5px;
   font-weight: bold;
   color: white;
-  text-shadow: #ff5e00;
 }
 
 input[type="text"],
@@ -75,24 +115,74 @@ input[type="number"] {
   border-radius: 4px;
 }
 
+/* Estilos para los botones */
 .buttons {
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
   margin-top: 20px;
 }
 
-button[type="submit"],
-button[type="button"] {
+button[type="submit"] {
   background-color: #ff5e00;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 10px 30px;
   cursor: pointer;
   border-radius: 4px;
+  font-size: 1.1rem;
 }
 
-button[type="submit"]:hover,
-button[type="button"]:hover {
+button[type="submit"]:hover {
   background-color: #00e013;
-  
+}
+
+/* Responsividad del formulario */
+@media (max-width: 768px) {
+  .contact-form {
+    width: 90%; /* Ajusta el ancho para tabletas */
+    max-width: none; 
+    right: 10px; /* Agrega un margen lateral en pantallas pequeñas */
+  }
+
+  .form-content {
+    padding: 15px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .close-btn {
+    font-size: 1.8rem;
+    top: 10px;
+    right: 15px;
+  }
+
+  .form-group h3 {
+    font-size: 1.2rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"] {
+    font-size: 0.9rem;
+    padding: 6px;
+  }
+
+  button[type="submit"] {
+    font-size: 1rem;
+  }
 }

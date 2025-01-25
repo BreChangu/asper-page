@@ -1,79 +1,92 @@
+<!-- Botón de contacto (toggle) -->
 <div class="contact-toggle" (click)="toggleForm()">Contacto</div>
 
+<!-- Formulario de contacto -->
 <div class="contact-form" [class.hidden]="!isFormVisible">
-  <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
-    <!-- Información del solicitante -->
-    <div class="form-group">
-      <h3>Información del solicitante</h3>
-      <div>
-        <label for="companyName">Nombre de la empresa o solicitante:</label>
-        <input
-          type="text"
-          id="companyName"
-          name="companyName"
-          ngModel
-          required
-        />
-      </div>
-      <div>
-        <label for="businessType">Giro de la empresa:</label>
-        <input
-          type="text"
-          id="businessType"
-          name="businessType"
-          ngModel
-          required
-        />
-      </div>
-    </div>
+  <!-- Botón de cierre en la esquina superior derecha -->
+  <button class="close-btn" (click)="toggleForm()">✖</button>
 
-    <!-- Detalles del servicio -->
-    <div class="form-group">
-      <h3>Detalles del servicio</h3>
-      <div>
-        <label for="services">Servicios solicitados:</label>
-        <input type="text" id="services" name="services" ngModel required />
-      </div>
-      <div>
-        <label for="employeeCount">Número de empleados:</label>
-        <input
-          type="number"
-          id="employeeCount"
-          name="employeeCount"
-          ngModel
-          required
-        />
-      </div>
-      <div>
-        <label for="squareMeters">M2:</label>
-        <input
-          type="number"
-          id="squareMeters"
-          name="squareMeters"
-          ngModel
-          required
-        />
-      </div>
-    </div>
-
-    <!-- Información de contacto -->
-    <div class="form-group">
-      <h3>Información de contacto</h3>
-      <div>
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" ngModel required />
+  <!-- Contenido del formulario -->
+  <div class="form-content">
+    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+      <!-- Información del solicitante -->
+      <div class="form-group">
+        <h3>Información del solicitante</h3>
+        <div>
+          <label for="companyName">Nombre de la empresa o solicitante:</label>
+          <input
+            type="text"
+            id="companyName"
+            name="companyName"
+            ngModel
+            required
+          />
+        </div>
+        <div>
+          <label for="businessType">Giro de la empresa:</label>
+          <input
+            type="text"
+            id="businessType"
+            name="businessType"
+            ngModel
+            required
+          />
+        </div>
       </div>
 
-      <div>
-        <label for="phone">Número de teléfono:</label>
-        <input type="tel" id="phone" name="phone" ngModel required />
+      <!-- Detalles del servicio -->
+      <div class="form-group">
+        <h3>Detalles del servicio</h3>
+        <div>
+          <label for="services">Servicios a Cotizar:</label>
+          <input
+            type="text"
+            id="services"
+            name="services"
+            ngModel
+            required
+          />
+        </div>
+        <div>
+          <label for="employeeCount">Número de empleados:</label>
+          <input
+            type="number"
+            id="employeeCount"
+            name="employeeCount"
+            ngModel
+            required
+          />
+        </div>
+        <div>
+          <label for="squareMeters">M2:</label>
+          <input
+            type="number"
+            id="squareMeters"
+            name="squareMeters"
+            ngModel
+            required
+          />
+        </div>
       </div>
-    </div>
 
-    <!-- Botones -->
-    <div class="buttons">
-      <button type="submit">Enviar</button>
-      <button type="button" (click)="toggleForm()">Cerrar</button>
-    </div>
-  </form>
+      <!-- Información de contacto -->
+      <div class="form-group">
+        <h3>Información de contacto</h3>
+        <div>
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" ngModel required />
+        </div>
+
+        <div>
+          <label for="phone">Número de teléfono:</label>
+          <input type="tel" id="phone" name="phone" ngModel required />
+        </div>
+      </div>
+
+      <!-- Botón de envío -->
+      <div class="buttons">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
 </div>
