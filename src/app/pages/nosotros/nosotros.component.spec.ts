@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { NosotrosComponent } from './nosotros.component';
 
 describe('NosotrosComponent', () => {
@@ -8,7 +9,16 @@ describe('NosotrosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NosotrosComponent]
+      imports: [
+        RouterTestingModule,
+        NosotrosComponent  // Importa NosotrosComponent aquí en lugar de declararlo
+      ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: { snapshot: { paramMap: { get: () => 'test-id' } } }
+        }
+      ]
     })
     .compileComponents();
     
@@ -20,4 +30,6 @@ describe('NosotrosComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // Agrega tus pruebas adicionales aquí
 });

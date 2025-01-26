@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 import { ContactoComponent } from './contacto.component';
+import { ContactService } from '../../servicios/contact.service';
 
 describe('ContactoComponent', () => {
   let component: ContactoComponent;
@@ -8,7 +10,14 @@ describe('ContactoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ContactoComponent]
+      imports: [
+        FormsModule,
+        HttpClientTestingModule,  // Importa HttpClientTestingModule aquí
+        ContactoComponent  // Importa ContactoComponent como standalone aquí
+      ],
+      providers: [
+        ContactService  // Proporciona ContactService aquí
+      ]
     })
     .compileComponents();
     
@@ -20,4 +29,6 @@ describe('ContactoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // Agrega tus pruebas adicionales aquí
 });

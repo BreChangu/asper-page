@@ -11,7 +11,7 @@ import { SliderComponent } from './componentes/slider/slider.component';
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, NavbarComponent, FooterComponent, ContactoComponent, SliderComponent]
+    imports: [RouterOutlet, NavbarComponent, FooterComponent, ContactoComponent,]
 })
 
 
