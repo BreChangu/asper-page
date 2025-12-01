@@ -25,17 +25,17 @@ export class ServiciosComponent {
       case 'Seguridad e Higiene':
         this.modalTitle = 'Seguridad e Higiene';
         this.modalLinks = [
-          { label: 'Normas Organizacionales', url: '/normas-organizacionales' },
+          { label: 'Normas Organizacionales' , url: '/normas-organizacionales' },
           { label: 'Normas de Seguridad', url: '/normas-seguridad' },
-          { label: 'Consultoría Especializada', url: '/seguridad-consultoria' }
+          { label: 'Consultoría Especializada', url: '/consultoria' }
         ];
         break;
       case 'Calidad':
         this.modalTitle = 'Calidad';
         this.modalLinks = [
-          { label: 'Control de Calidad', url: '/calidad-control' },
-          { label: 'Auditorías', url: '/calidad-auditorias' },
-          { label: 'Capacitación', url: '/calidad-capacitacion' }
+          { label: 'Control de Calidad', url: '/control-calidad' },
+          { label: 'Auditorías', url: '/auditorias' },
+          { label: 'Sistemas de Gestión de Calidad', url: '/calidad-capacitacion' }
         ];
         break;
       case 'Ingeniería de Servicios':
@@ -47,7 +47,7 @@ export class ServiciosComponent {
         ];
         break;
       case 'Servicios 4':
-        this.modalTitle = 'Servicios 4';
+        this.modalTitle = 'Cursos';
         this.modalLinks = [
           { label: 'Servicio A', url: '/servicio-a' },
           { label: 'Servicio B', url: '/servicio-b' },

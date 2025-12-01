@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ContactService {
-  private apiUrl = 'http://localhost:3000/send-email'; 
+  private apiUrl = 'https://asper-api.onrender.com'; 
 
   constructor(private http: HttpClient) { }
 

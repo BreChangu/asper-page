@@ -93,17 +93,18 @@ body {
   .social-icon,
   .menu {
     flex-direction: column;
-    align-items: center;
+    align-items:center;
   }
 
   .social-icon__item,
   .menu__item {
-    margin: 5px 0;
+    margin: 1.3rem 0;
+    
   }
 
   .logo-asper {
     width: 200px;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
   }
 }
 

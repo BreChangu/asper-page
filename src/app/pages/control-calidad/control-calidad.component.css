@@ -1,0 +1,66 @@
+/* General Styles */
+
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+  }
+  
+  /* Header Styles */
+  h2, h3 {
+    color: #adacac;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.8rem;
+  }
+  
+  /* Paragraph Styles */
+  p {
+    color: #fffefe;
+    margin: 10px 0;
+    text-align: justify;
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.9rem;
+  }
+  
+  /* List Styles */
+  ul {
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+    color:white;
+    font-size:  1.3rem;
+  }
+  
+  ul li {
+    background: #242323;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-left: 5px solid #007BFF;
+  }
+  
+  /* Image Styles */
+  .image-container {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    h2, h3 {
+      font-size: 1.5rem;
+    }
+  
+    p, ul li {
+      font-size: 1rem;
+    }
+  }
+  

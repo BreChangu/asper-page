@@ -55,8 +55,9 @@ h1 {
 
 /* Banner */
 .banner {
-  background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  background: linear-gradient(to right, rgb(19, 18, 18), rgba(0, 0, 0, 0));
   background-size: cover;
+  height: 100%;
   border-radius: 4px;
   padding: 2rem;
   width: 100%;
@@ -67,9 +68,11 @@ h1 {
 }
 
 .banner h1 {
-  padding: 1rem;
+  padding: 0rem;
   border-radius: 4px;
-  width: 100%;
+  width: 70%;
+  text-align: left;
+  margin-left: -12rem;
 }
 
 /* Sección de Valor */
