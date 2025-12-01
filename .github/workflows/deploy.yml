@@ -1,0 +1,46 @@
+name: Deploy Asper to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # Tu rama principal en este repo es 'master'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
+      - name: Build
+        # OJO: Cambia 'asper-page' por el nombre EXACTO de tu repo si es diferente
+        # Esto asegura que cargue bien los estilos y scripts
+        run: ng build --configuration production --base-href=/asper-page/
+
+      - name: Copy index.html to 404.html
+        # Esto soluciona el problema de recargar la página en rutas internas
+        # VERIFICA que 'asper-page' sea el nombre en tu angular.json (outputPath)
+        run: cp dist/asper-page/browser/index.html dist/asper-page/browser/404.html
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # VERIFICA que esta ruta coincida con tu 'outputPath' en angular.json
+          folder: dist/asper-page/browser
+          branch: gh-pages
+          clean: true
