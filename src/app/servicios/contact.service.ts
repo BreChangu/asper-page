@@ -6,11 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ContactService {
+  // URL base de tu backend
   private apiUrl = 'https://asper-api.onrender.com'; 
 
   constructor(private http: HttpClient) { }
 
   sendContactEmail(contactData: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, contactData);
+    // CORRECCIÓN: Agregamos '/send-email' para que coincida con tu app.post('/send-email') del backend
+    return this.http.post<any>(`${this.apiUrl}/send-email`, contactData);
   }
 }
