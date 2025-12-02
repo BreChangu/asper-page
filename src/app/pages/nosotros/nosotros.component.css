@@ -1,151 +1,328 @@
-/* General Styles */
-body {
-    font-family: Arial, Helvetica, sans-serif;
-  }
+:host {
+  /* --- PALETA DE LUJO (SILENT LUXURY) --- */
+  --bg-color: #050505;      /* Negro profundo */
+  --text-white: #ffffff;
+  --text-grey: #a1a1aa;     /* Plata suave */
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --accent-glow: rgba(255, 255, 255, 0.15);
   
-  /* Sección Nosotros */
-  .section-nosotros {
-    background-color:rgba(0, 0, 0, 0.1); /* Color de fondo claro */
-    color: #333; /* Color del texto */
-    padding: 2rem 0;
-  }
+  /* --- TIPOGRAFÍA --- */
+  --font-main: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', serif;
   
-  .container-nosotros {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
+  /* --- ANIMACIONES --- */
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* =========================================
+   SECCIÓN 1: MANIFIESTO (Intro Split)
+   ========================================= */
+
+.about-page {
+  background-color: var(--bg-color);
+  color: var(--text-white);
+  padding-top: 160px; /* Espacio para el Navbar fijo */
+  padding-bottom: 100px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px; /* Ancho estándar de lectura */
+  margin: 0 auto;    /* Centrado horizontal */
+  padding: 0 24px;
+}
+
+.manifesto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 50% Texto - 50% Imagen */
+  gap: 80px; /* Espacio elegante entre columnas */
+  align-items: center;
+  min-height: 60vh; /* Altura mínima para presencia */
+}
+
+/* -- Columna de Texto -- */
+.text-col {
+  padding-right: 20px;
+}
+
+.overline {
+  font-family: var(--font-main);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--text-grey);
+  display: block;
+  margin-bottom: 24px;
+  opacity: 0.8;
+}
+
+.title {
+  font-family: var(--font-main);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  color: var(--text-white);
+}
+
+.italic-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: #d4d4d4;
+}
+
+.description {
+  font-family: var(--font-main);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text-grey);
+  margin-bottom: 24px;
+  font-weight: 300;
+  max-width: 500px;
+}
+
+/* -- Columna Visual (Imagen) -- */
+.visual-col {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.image-frame {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 600px; /* Formato vertical (Portrait) elegante */
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.1); /* B&W por defecto */
+  transition: transform 0.7s var(--ease-out), filter 0.5s ease;
+}
+
+/* Efecto Hover en Imagen */
+.image-frame:hover .about-img {
+  filter: grayscale(0%); /* Recupera color */
+  transform: scale(1.03);
+}
+
+
+/* =========================================
+   SECCIÓN 2: ACORDEÓN INTERACTIVO (ADN)
+   ========================================= */
+
+.interactive-about {
+  background-color: var(--bg-color);
+  color: var(--text-white);
+  padding: 100px 0;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid var(--border-subtle); /* Separador sutil */
+}
+
+/* Contenedor más ancho para el acordeón */
+.container-fluid {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* -- Header Centrado -- */
+.header-minimal {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--font-main);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--text-grey);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.section-quote {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.2;
+  color: var(--text-white);
+}
+
+/* -- Los Pilares (Acordeón) -- */
+.pillars-container {
+  display: flex;
+  height: 600px;
+  width: 100%;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.pillar {
+  position: relative;
+  flex: 1; /* Tamaño inicial igual */
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: flex 0.8s var(--ease-out); /* Animación de estiramiento */
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Hover: Crece el pilar */
+.pillar:hover {
+  flex: 3; /* Ocupa 3x espacio */
+}
+
+/* Fondo del pilar */
+.pillar-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform 0.8s var(--ease-out), filter 0.5s ease;
+  filter: grayscale(100%) brightness(0.5); /* Oscuro para leer texto */
+  z-index: 0;
+}
+
+.pillar:hover .pillar-bg {
+  filter: grayscale(0%) brightness(0.8);
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+  z-index: 1;
+}
+
+/* -- Contenido del Pilar -- */
+.pillar-content {
+  position: relative; z-index: 2;
+  padding: 40px;
+  width: 100%;
+}
+
+/* --- ICONOS DE PILARES (Reemplaza a los números) --- */
+.pillar-icon {
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.4); /* Blanco sutil por defecto */
+  transition: all 0.5s var(--ease-out);
+  width: fit-content;
+}
+
+.pillar-icon svg {
+  width: 48px;
+  height: 48px;
+  stroke-width: 1; /* Líneas finas para elegancia */
+  filter: drop-shadow(0 0 0 rgba(255,255,255,0)); /* Sin brillo inicial */
+  transition: all 0.5s ease;
+}
+
+/* Efecto al hacer Hover en el Pilar */
+.pillar:hover .pillar-icon {
+  color: #fff; /* Se vuelve blanco puro */
+  transform: translateY(-5px) scale(1.1); /* Flota un poco hacia arriba */
+}
+
+.pillar:hover .pillar-icon svg {
+  stroke-width: 1.5; /* Se hace un poco más grueso */
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)); /* Efecto Neón suave */
+}
+
+.pillar-title {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 2rem; 
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  white-space: nowrap; 
+}
+
+.pillar-desc {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: 1.1rem; 
+  line-height: 1.6; 
+  color: #ccc;
+  max-width: 450px;
   
-  .imagen-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-  }
-  
-  .imagen {
-    max-height: 400px;
-    width: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .contenido-texto {
-    flex: 1;
+  /* Animación de entrada */
+  max-height: 0; opacity: 0; overflow: hidden;
+  transition: all 0.85s var(--ease-out);
+}
+
+.pillar:hover .pillar-desc {
+  max-height: 200px;
+  opacity: 1;
+  margin-bottom: 30px;
+}
+
+/* Botón Circular */
+.btn-pillar {
+  background: white; color: black; border: none;
+  width: 48px; height: 48px; border-radius: 50%;
+  font-size: 1.5rem; 
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: scale(0.8);
+  transition: all 0.4s var(--ease-out) 0.1s;
+}
+
+.pillar:hover .btn-pillar {
+  opacity: 1; transform: scale(1);
+}
+
+
+/* =========================================
+   RESPONSIVE (Móviles y Tablets)
+   ========================================= */
+
+@media (max-width: 900px) {
+  /* Manifiesto se apila */
+  .manifesto-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
     text-align: center;
-    margin-top: 2rem;
   }
   
-  h1 {
-    font-size: 2.5rem;
-    color: #1a202c; /* Color del texto del título */
-    margin-bottom: 1rem;
+  .description { margin: 0 auto 20px; }
+  .text-col { padding-right: 0; }
+  
+  /* Imagen más pequeña en móvil */
+  .image-frame { height: 400px; margin: 0 auto; }
+
+  /* Acordeón se convierte en lista vertical */
+  .pillars-container {
+    flex-direction: column;
+    height: auto;
   }
   
-  .introduccion {
-    font-size: 1.2rem;
-    color: #4a5568; /* Color del texto de la introducción */
-    margin-bottom: 2rem;
-    line-height: 1.6;
+  .pillar {
+    height: 350px;
+    width: 100%;
+    flex: none; /* Sin elasticidad */
   }
   
-  .botones {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-  }
+  .pillar:hover { flex: none; }
   
-  .btn-contacto, .btn-servicios {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .btn-contacto {
-    background-color: #3182ce; /* Color azul para el botón de contacto */
-    color: #fff;
-  }
-  
-  .btn-servicios {
-    background-color: #e2e8f0; /* Color claro para el botón de servicios */
-    color: #2d3748;
-  }
-  
-  .btn-contacto:hover {
-    background-color: #2b6cb0;
-  }
-  
-  .btn-servicios:hover {
-    background-color: #cbd5e0;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 1024px) {
-    .container-nosotros {
-      flex-direction: column;
-      text-align: center;
-    }
-    
-    .imagen-container, .contenido-texto {
-      width: 100%;
-      margin-top: 2rem;
-    }
-    
-    .contenido-texto {
-      text-align: center;
-    }
-    
-    h1 {
-      font-size: 2rem;
-    }
-  
-    .introduccion {
-      font-size: 1.1rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 1.8rem;
-    }
-  
-    .introduccion {
-      font-size: 1rem;
-    }
-  
-    .imagen {
-      max-height: 300px;
-    }
-    
-    .botones {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-  
-    .btn-contacto, .btn-servicios {
-      width: 100%;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 1.5rem;
-    }
-  
-    .introduccion {
-      font-size: 0.9rem;
-    }
-  
-    .imagen {
-      max-height: 200px;
-    }
-  }
-  
+  /* Texto siempre visible en móvil */
+  .pillar-desc { max-height: auto; opacity: 1; margin-bottom: 20px; }
+  .btn-pillar { opacity: 1; transform: scale(1); }
+  .pillar-bg { filter: grayscale(0%) brightness(0.6); }
+}

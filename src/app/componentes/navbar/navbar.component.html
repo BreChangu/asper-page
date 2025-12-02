@@ -1,22 +1,39 @@
-<!-- navbar.component.html -->
-<nav>
-    <div class="logo-container">
-      <a routerLink="">
-        <img class="logo-asper" src="../../assets/imagenes/asper-bco.png" alt="Logo">
+<nav [class.scrolled]="isScrolled()">
+  <div class="nav-container">
+    
+    <div class="logo-wrapper">
+      <a routerLink="" (click)="closeMenu()">
+        <img class="logo-asper" src="assets/imagenes/asper-bco.png" alt="Asper Logo">
       </a>
     </div>
   
-    <div class="hamburger" (click)="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="hamburger" 
+         [class.open]="menuActive()" 
+         (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   
-    <ul class="nav-links" [class.active]="menuActive">
-      <li><a routerLink="" (click)="closeMenu()">Home</a></li>
-      <li><a routerLink="/nosotros" (click)="closeMenu()">Nosotros</a></li>
-      <li><a routerLink="/servicios" (click)="closeMenu()">Servicios</a></li>
-      <!-- <li><a routerLink="/contacto">Contacto</a></li> -->
+    <ul class="nav-links" [class.active]="menuActive()">
+      <li>
+        <a routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
+          Home
+        </a>
+      </li>
+      <li>
+        <a routerLink="/nosotros" routerLinkActive="active-link" (click)="closeMenu()">
+          Nosotros
+        </a>
+      </li>
+      <li>
+        <a routerLink="/servicios" routerLinkActive="active-link" (click)="closeMenu()">
+          Servicios
+        </a>
+      </li>
+      
+     
     </ul>
-  </nav>
-  
+
+  </div>
+</nav>

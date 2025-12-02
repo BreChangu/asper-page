@@ -1,188 +1,164 @@
-/* Estilos para el botón de contacto (toggle) */
-.contact-toggle {
+:host {
+  --bg-panel: #0a0a0a;
+  --text-white: #ffffff;
+  --text-muted: #888;
+  --border-light: rgba(255, 255, 255, 0.15);
+  --accent-wa: #25D366; /* Verde WhatsApp */
+  --font-main: 'Outfit', sans-serif;
+}
+
+/* --- 1. PESTAÑA LATERAL (Side Tab) --- */
+.side-tab {
   position: fixed;
-  right: -50px;
   top: 50%;
-  transform: translateY(-50%) rotate(90deg);
-  background-color: #ff5e00;
-  color: white;
-  padding: 15px 20px;
-  cursor: pointer;
-  font-size: 1.8rem;
-  font-family: Arial, Helvetica, sans-serif;
-  border-radius: 10px;
-  transition: right 0.3s ease-in;
-  z-index: 1000;
-}
-
-.contact-toggle:hover {
-  right: -30px;
-}
-
-/* Hacer el botón responsive */
-@media (max-width: 768px) {
-  .contact-toggle {
-    right: -60px;
-    font-size: 1.6rem;
-    padding: 10px 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-toggle {
-    right: -50px;
-    font-size: 1.4rem;
-    padding: 8px 12px;
-  }
-}
-
-/* Estilos para el formulario de contacto */
-.contact-form {
-  position: fixed;
-  top: 50%; /* Centra verticalmente en la página */
   right: 0;
-  transform: translateY(-50%) translateX(100%); /* Alinea al costado derecho por defecto */
-  height: auto; 
-  width: 80%; 
-  max-width: 500px;
-  background-color: rgba(10, 10, 10, 0.95);
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  font-family: Arial, Helvetica, sans-serif;
-  overflow-y: auto;
-  z-index: 2000;
-}
-
-/* Estado visible del formulario */
-.contact-form:not(.hidden) {
-  transform: translateY(-50%) translateX(0); /* Muestra el formulario */
-}
-
-/* Ajuste del margen superior */
-.form-content {
-  padding: 20px;
-}
-
-/* Botón de cierre */
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #ffffff;
+  transform: translateY(-50%) rotate(-90deg) translateY(10%); /* Rotación correcta */
+  transform-origin: bottom right;
+  
+  background-color: #000; /* Negro sólido elegante */
+  border: 1px solid var(--border-light);
+  border-bottom: none; /* Se conecta con el borde de la pantalla */
+  
+  padding: 12px 24px;
   cursor: pointer;
-  z-index: 2100;
+  z-index: 2000;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+  
+  /* Forma de pestaña */
+  border-radius: 8px 8px 0 0; 
 }
 
-.close-btn:hover {
-  color: #ff5e00;
+/* Hover: Sale un poco más */
+.side-tab:hover {
+  padding-bottom: 30px; /* Efecto de "jalar" */
+  background-color: white; /* Inversión de color */
 }
 
-/* Estilos para los grupos de formulario */
-.form-group {
-  margin-bottom: 20px;
+.side-tab:hover .tab-text { color: black; }
+
+.tab-text {
+  color: white;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.form-group h3 {
-  margin-bottom: 10px;
-  font-size: 1.4em;
-  color: #ff5e00;
-  text-align: center;
+/* Ocultar pestaña cuando el panel está abierto */
+.side-tab.active { transform: translateY(-50%) rotate(-90deg) translateY(200%); opacity: 0; }
+
+
+/* --- 2. BACKDROP --- */
+.backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px); z-index: 2001;
+  opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+}
+.backdrop.visible { opacity: 1; pointer-events: auto; }
+
+
+/* --- 3. PANEL DESLIZANTE (Drawer) --- */
+.contact-panel {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 100%; max-width: 480px;
+  background: var(--bg-panel);
+  border-left: 1px solid var(--border-light);
+  z-index: 2002;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex; flex-direction: column;
+  box-shadow: -20px 0 50px rgba(0,0,0,0.9);
 }
 
-/* Estilos para las etiquetas y campos */
-.form-group div {
-  margin-bottom: 10px;
+.contact-panel.open { transform: translateX(0); }
+
+/* Header */
+.panel-header {
+  padding: 30px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid var(--border-light);
 }
+.panel-title { font-family: var(--font-main); font-size: 1.5rem; color: white; margin: 0; font-weight: 600; }
+.close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+.close-btn:hover { color: white; }
+
+/* Body */
+.panel-body { padding: 30px; overflow-y: auto; flex: 1; }
+
+/* Sección WhatsApp */
+.section-label { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 2px; margin-bottom: 15px; display: block; }
+
+.btn-whatsapp {
+  width: 100%;
+  background: rgba(37, 211, 102, 0.1); /* Verde transparente */
+  border: 1px solid var(--accent-wa);
+  color: var(--accent-wa);
+  padding: 14px;
+  border-radius: 4px;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: all 0.3s;
+}
+
+.btn-whatsapp:hover {
+  background: var(--accent-wa);
+  color: #000;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Divisor */
+.divider {
+  display: flex; align-items: center; margin: 30px 0; color: var(--text-muted); font-size: 0.8rem;
+}
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border-light); }
+.divider span { padding: 0 10px; }
+
+/* Formulario Minimalista */
+.form-row { display: flex; gap: 15px; margin-bottom: 20px; }
+.input-group { flex: 1; display: flex; flex-direction: column; }
 
 label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: white;
+  font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="number"] {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #ec0d0d;
-  border-radius: 4px;
-}
-
-/* Estilos para los botones */
-.buttons {
-  text-align: center;
-  margin-top: 20px;
-}
-
-button[type="submit"] {
-  background-color: #ff5e00;
-  color: white;
+input, select, textarea {
+  background: transparent;
   border: none;
-  padding: 10px 30px;
+  border-bottom: 1px solid var(--border-light);
+  padding: 10px 0;
+  color: white;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  border-radius: 0; /* Estilo editorial */
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-bottom-color: white;
+}
+
+/* Botón Enviar */
+.btn-submit {
+  width: 100%; margin-top: 20px;
+  background: white; color: black;
+  border: none; padding: 16px;
+  font-weight: 700; font-size: 1rem;
+  border-radius: 2px;
   cursor: pointer;
-  border-radius: 4px;
-  font-size: 1.1rem;
+  display: flex; justify-content: center; align-items: center; gap: 10px;
+  transition: transform 0.2s;
 }
+.btn-submit:hover { transform: translateY(-2px); }
 
-button[type="submit"]:hover {
-  background-color: #00e013;
-}
-
-/* Responsividad del formulario */
-@media (max-width: 768px) {
-  .contact-form {
-    width: 90%; /* Ajusta el ancho para tabletas */
-    max-width: none; 
-    right: 10px; /* Agrega un margen lateral en pantallas pequeñas */
-  }
-
-  .form-content {
-    padding: 15px;
-  }
-
-  button[type="submit"] {
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
+/* Responsive */
 @media (max-width: 480px) {
-  .close-btn {
-    font-size: 1.8rem;
-    top: 10px;
-    right: 15px;
-  }
-
-  .form-group h3 {
-    font-size: 1.2rem;
-  }
-
-  label {
-    font-size: 0.9rem;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="number"] {
-    font-size: 0.9rem;
-    padding: 6px;
-  }
-
-  button[type="submit"] {
-    font-size: 1rem;
-  }
+  .side-tab { padding: 10px 16px; right: -30px; /* Ajuste fino */ }
+  .form-row { flex-direction: column; gap: 20px; }
 }

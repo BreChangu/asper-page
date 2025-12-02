@@ -1,21 +1,68 @@
-<section>
-  <div class="servicios">
-    <div class="service-item-seguridad" (click)="openModal('Seguridad e Higiene')">Seguridad e Higiene</div>
-    <div class="service-item-calidad" (click)="openModal('Calidad')">Calidad</div>
-    <div class="service-item-ingenieria" (click)="openModal('Ingeniería de Servicios')">Ingeniería de Servicios</div>
-    <div class="service-item-servicios" (click)="openModal('Servicios 4')">Cursos </div>
+<section class="services-page">
+  <div class="container">
+    
+    <header class="section-header">
+      <span class="label">Nuestra Expertise</span>
+      <h1 class="title font-display">Soluciones <span class="italic">Estratégicas</span></h1>
+    </header>
+
+    <div class="services-grid">
+      @for (service of services; track $index) {
+        <article class="service-card" (click)="openModal(service)">
+          
+          <div class="card-bg">
+            <img [src]="service.image" [alt]="service.title">
+            <div class="overlay"></div>
+          </div>
+
+          <div class="card-content">
+            
+            <div class="content-header">
+              <div class="icon-arrow">→</div>
+            </div>
+
+            <div class="content-body">
+              <h3 class="service-title">{{ service.title }}</h3>
+              <p class="service-sub">{{ service.subtitle }}</p>
+              
+              <div class="mini-list">
+                @for (link of service.links.slice(0, 3); track $index) {
+                  <span class="mini-item">
+                    <span class="dot">•</span> {{ link.label }}
+                  </span>
+                }
+              </div>
+
+              <div class="progress-line"></div>
+            </div>
+
+          </div>
+        </article>
+      }
+    </div>
+
   </div>
 </section>
 
-<div id="modal" class="modal" [ngClass]="{ 'show': isModalOpen }">
-  <div class="modal-content">
-    <span class="close" (click)="closeModal()">&times;</span>
-    <h2>{{ modalTitle }}</h2>
-    <ul>
-      <li *ngFor="let item of modalLinks">
-        <a (click)="navigateToPage(item.url)">{{ item.label }}</a>
-      </li>
-    </ul>
-    <button class="close-button" (click)="closeModal()">Cerrar</button>
+@if (isModalOpen && selectedService) {
+  <div class="modal-backdrop" (click)="closeModal()">
+    
+    <div class="modal-panel" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeModal()">✕</button>
+      
+      <div class="modal-header">
+        <span class="modal-subtitle">Catálogo de Servicios</span>
+        <h2 class="modal-title">{{ selectedService.title }}</h2>
+      </div>
+
+      <ul class="modal-links">
+        @for (link of selectedService.links; track $index) {
+          <li (click)="navigateToPage(link.url)">
+            <span class="link-text">{{ link.label }}</span>
+            <span class="link-arrow">↗</span>
+          </li>
+        }
+      </ul>
+    </div>
   </div>
-</div>
+}

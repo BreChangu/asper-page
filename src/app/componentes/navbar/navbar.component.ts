@@ -1,33 +1,30 @@
-import { Component } from "@angular/core";
-import { RouterLink } from "@angular/router";
-import { ActivatedRoute } from '@angular/router';
+import { Component, HostListener, signal } from "@angular/core";
+import { RouterLink, RouterLinkActive } from "@angular/router";
+import { CommonModule } from "@angular/common";
 
 @Component({
-  selector:'app-navbar',
-  standalone:true,
-  imports:[RouterLink],
-  templateUrl:'./navbar.component.html',
-  styleUrl:'./navbar.component.css'
-
+  selector: 'app-navbar',
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterLinkActive],
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css'
 })
-
 export class NavbarComponent {
-  menuActive:boolean = false;
-  toggleMenu():void{
-    this.menuActive= !this.menuActive;
-    console.log('Menu Active:', this.menuActive);
-    const navLinksElement = document.querySelector('.nav-links');
-  if (navLinksElement) {
-    console.log('Classes:', navLinksElement.classList);
+  
+  menuActive = signal(false);
+  isScrolled = signal(false);
+
+  // Detectar scroll para cambiar el fondo
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled.set(window.scrollY > 50);
+  }
+
+  toggleMenu(): void {
+    this.menuActive.update(val => !val);
+  }
+
+  closeMenu(): void {
+    this.menuActive.set(false);
   }
 }
-closeMenu(): void {
-  this.menuActive = false;
-  console.log('Closing menu:', this.menuActive);
-}
-
-}
-
-
-
-

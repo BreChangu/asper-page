@@ -1,12 +1,46 @@
-<footer class="footer">
-  
-  <ul class="menu">
-    <li>
-      <img class="logo-asper" src="../../assets/imagenes/asper-bco.png" alt="Logo">
-    </li>
-    <li class="menu__item"><a class="menu__link"  a routerLink="">Home</a></li>
-    <li class="menu__item"><a class="menu__link"  a routerLink="/nosotros">Nosotros</a></li>
-    <li class="menu__item"><a class="menu__link" a routerLink="/servicios">Servicios</a></li>
-  </ul>
-  <p>&copy;2024 <a href="https://www.linkedin.com/in/c%C3%A9sar-fernando-a-5579a8154/" target="_blank"> Fernando Guerra Web Developer </a> | All Rights Reserved</p>
+<footer class="footer-architectural">
+  <div class="container">
+    
+    <div class="footer-top">
+      <div class="brand-col">
+        <a routerLink="" class="footer-logo">
+          <img src="assets/imagenes/asper-bco.png" alt="Asper Logo">
+        </a>
+        <p class="brand-promise">
+          Consultoría estratégica para la era digital. Transformamos visión en legado.
+        </p>
+      </div>
+
+      <div class="links-col">
+        <span class="col-title">Explorar</span>
+        <nav class="footer-nav">
+          <a routerLink="" class="link-item">Home</a>
+          <a routerLink="/nosotros" class="link-item">Nosotros</a>
+          <a routerLink="/servicios" class="link-item">Servicios</a>
+          </nav>
+      </div>
+
+      <div class="social-col">
+        <span class="col-title">Conectar</span>
+        <div class="social-links">
+          <a href="#" target="_blank" class="social-btn">LinkedIn ↗</a>
+          <a href="#" target="_blank" class="social-btn">Email ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <p class="copyright">© {{ currentYear }} Asper Consulting Group.</p>
+      
+      <p class="credits">
+        Desarrollado por 
+        <a href="https://www.linkedin.com/in/c%C3%A9sar-fernando-a-5579a8154/" target="_blank" class="dev-link">
+          Fernando Guerra
+        </a>
+      </p>
+    </div>
+
+  </div>
 </footer>

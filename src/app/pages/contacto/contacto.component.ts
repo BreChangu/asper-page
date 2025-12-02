@@ -20,6 +20,14 @@ export class ContactoComponent {
     this.isFormVisible = !this.isFormVisible;
     console.log('Formulario visible:', this.isFormVisible);
   }
+  
+
+  openWhatsApp() {
+    const phoneNumber = '525512345678'; // Reemplaza con tu número real (código país + número)
+    const message = 'Hola, me interesa cotizar un servicio con Asper.';
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  }
 
   onSubmit(contactForm: NgForm) {
     if (contactForm.valid) {

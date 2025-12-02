@@ -1,113 +1,173 @@
-/* Reset CSS */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:host {
+  --bg-color: #050505;      /* Negro profundo */
+  --text-white: #ffffff;
+  --text-grey: #a1a1aa;     /* Plata suave */
+  --border-color: rgba(255, 255, 255, 0.1);
+  --font-main: 'Outfit', sans-serif;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+.footer-architectural {
+  background-color: var(--bg-color);
+  color: var(--text-white);
+  font-family: var(--font-main);
+  padding: 80px 0 40px;
+  border-top: 1px solid var(--border-color); /* Borde sutil, no rojo */
 }
 
-/* Footer Styles */
-.footer {
-  width: 100%;
-  background-image: linear-gradient(to right, rgba(61, 60, 60, 0.4), rgba(245, 242, 242, 0));
-  padding: 20px 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 1.8rem;
-  border-top: 2px solid #c71616;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+/* --- TOP SECTION (Grid) --- */
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr; /* La columna de marca es más ancha */
+  gap: 60px;
+  margin-bottom: 60px;
 }
 
-.logo-asper {
-  width: 250px;
+/* Marca */
+.footer-logo img {
+  width: 180px;
   height: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 24px;
+  filter: brightness(100%); /* Asegura que se vea blanco puro */
+  opacity: 0.9;
+  transition: opacity 0.3s;
 }
 
-.social-icon,
-.menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-}
+.footer-logo:hover img { opacity: 1; }
 
-.social-icon__item {
-  margin: 0 10px;
-}
-
-.social-icon__link {
-  font-size: 1.5rem;
-  color: #fff;
-  text-decoration: none;
-  transition: transform 0.3s, color 0.3s;
-}
-
-.social-icon__link:hover {
-  transform: translateY(-5px);
-  color: #c71616; /* Añadir color de hover */
-}
-
-.menu__item {
-  margin: 0 10px;
-}
-
-.menu__link {
-  font-size: 1.2rem;
-  color: #fff;
-  margin: 0 10px;
-  display: inline-block;
-  transition: font-size 0.3s, color 0.3s;
-  text-decoration: none;
-  opacity: 0.75;
+.brand-promise {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-grey);
+  max-width: 300px;
   font-weight: 300;
 }
 
-.menu__link:hover {
-  color: #c71616; /* Añadir color de hover */
-  opacity: 1;
+/* Columnas de Links */
+.col-title {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-grey);
+  margin-bottom: 24px;
+  opacity: 0.7;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.link-item {
+  text-decoration: none;
+  color: var(--text-white);
+  font-size: 1.1rem;
+  font-weight: 400;
+  width: fit-content;
+  position: relative;
+  transition: color 0.3s;
+}
+
+/* Efecto Hover: Flecha que aparece */
+.link-item::before {
+  content: '→';
+  position: absolute;
+  left: -20px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  color: var(--text-white);
+}
+
+.link-item:hover {
+  transform: translateX(20px);
+  color: #fff;
+}
+
+.link-item:hover::before {
+  opacity: 1;
+  left: -15px;
+}
+
+/* Botones Sociales (Minimalistas) */
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.social-btn {
+  text-decoration: none;
+  color: var(--text-grey);
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  padding: 12px 20px;
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.3s;
+  width: fit-content;
+}
+
+.social-btn:hover {
+  background: white;
+  color: black;
+  border-color: white;
+}
+
+/* --- DIVIDER & BOTTOM --- */
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-color);
+  margin-bottom: 30px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4); /* Gris muy oscuro para info secundaria */
+}
+
+.dev-link {
+  color: var(--text-grey);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  transition: border-color 0.3s;
+}
+
+.dev-link:hover {
+  color: white;
+  border-color: white;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr; /* Una sola columna en móvil */
+    gap: 40px;
     text-align: center;
   }
 
-  .social-icon,
-  .menu {
+  .brand-col, .links-col, .social-col {
+    display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
   }
 
-  .social-icon__item,
-  .menu__item {
-    margin: 1.3rem 0;
-    
-  }
-
-  .logo-asper {
-    width: 200px;
-    margin-bottom: 0rem;
+  .brand-promise { margin: 0 auto; }
+  
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
   }
 }
-
-
-/*Smooth */
-

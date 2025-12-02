@@ -1,204 +1,352 @@
-/* Reset CSS */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:host {
+  --bg-color: #050505;
+  --text-main: #ffffff;
+  --text-muted: #888888;
+  --line-color: rgba(255, 255, 255, 0.15);
+  --font-display: 'Outfit', sans-serif; /* O tu fuente Cinzel si prefieres */
+  --transition-slow: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); /* Apple-style easing */
 }
 
-/* General Styles */
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  background-color: #460606;
-}
-
-/* Encabezado */
-h1 {
-  color: white;
-  font-size: 4.2rem;
-  line-height: 4rem;
-  text-align: center;
-  animation: fadeIn 2s ease-in-out;
-  font-weight: 600;
-  font-family: "Segoe UI", Roboto, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-/* Introducción */
-.introduccion {
-  width: 80%;
-  margin: 2rem auto;
-  color: #ffffff;
-  font-size: 1.6rem;
-  line-height: 2.4rem;
-  text-align: justify;
-  font-weight: 400;
-  text-shadow: 1px 1px 2px #000; /* Añadir un sutil efecto de sombra para mejor legibilidad */
-  /* background: rgba(0,0,0,0.6 ); Fondo semi-transparente para mejor contraste */
-  padding: 1rem; /* Espaciado interno para mejorar la presentación */
-  border-radius: 8px; /* Bordes redondeados para un aspecto más suave */
-  animation: fadeIn 2s ease-in-out 0.5s;
-  animation-fill-mode: forwards;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar un efecto de elevación */
-}
-/* Contenedor Principal */
-.container-home {
-  height: 100vh;
+.hero-split {
+  display: flex;
+  height: 90vh; /* Ocupa casi toda la pantalla */
   width: 100%;
-  background-image: url(/assets/imagenes/pipol.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-color);
+  padding-top: 80px; /* Espacio navbar */
+}
+
+/* --- PANELES FLEXIBLES --- */
+.panel {
+  position: relative;
+  height: 100%;
+  transition: var(--transition-slow);
+  overflow: hidden;
+}
+
+/* Panel de Texto: Inicia Ancho */
+.text-panel {
+  flex: 1.5; /* Ocupa 60% aprox */
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /* Necesario para el degradado */
+  padding: 40px;
+  border-right: 1px solid var(--line-color); /* Línea divisoria elegante */
 }
 
-/* Banner */
-.banner {
-  background: linear-gradient(to right, rgb(19, 18, 18), rgba(0, 0, 0, 0));
-  background-size: cover;
-  height: 100%;
-  border-radius: 4px;
-  padding: 2rem;
+/* Panel de Imagen: Inicia Delgado (Monolito) */
+.image-panel {
+  flex: 0.8; /* Ocupa 40% aprox */
+  position: relative;
+  cursor: pointer;
+  filter: grayscale(100%); /* B&W por defecto = Elegancia */
+}
+
+/* --- INTERACCIÓN DE EXPANSIÓN (La Magia) --- */
+.hero-split:hover .text-panel {
+  flex: 1; /* El texto se encoge un poco */
+  opacity: 0.8; /* Se apaga ligeramente para dar foco a la imagen */
+}
+
+.hero-split:hover .image-panel {
+  flex: 1.5; /* La imagen crece */
+  filter: grayscale(0%); /* Recupera el color suavemente */
+}
+
+/* --- CONTENIDO TEXTO --- */
+.content-wrapper {
+  max-width: 600px;
+  z-index: 2;
+}
+
+.brand-line {
+  display: flex; align-items: center; gap: 10px;
+  text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem;
+  color: var(--text-muted); margin-bottom: 30px;
+}
+.dot { width: 6px; height: 6px; background: white; border-radius: 50%; }
+
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-weight: 700;
+  line-height: 0.95;
+  margin: 0;
+  letter-spacing: -2px;
+}
+
+/* Efecto Outline (Texto solo borde) */
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  font-weight: 300;
+}
+
+.separator {
+  width: 60px; height: 1px; background: white; margin: 40px 0;
+}
+
+.description {
+  font-size: 1.1rem; line-height: 1.6; color: var(--text-muted);
+  max-width: 400px; margin-bottom: 50px;
+}
+
+/* Botones */
+.actions { display: flex; align-items: center; gap: 30px; }
+
+.btn-minimal {
+  background: white; color: black; border: none;
+  padding: 14px 28px; font-weight: 600; cursor: pointer;
+  transition: transform 0.2s;
+  border-radius: .25rem;
+}
+.btn-minimal:hover { transform: translateY(-2px); }
+
+.link-arrow {
+  color: white; text-decoration: none; font-size: 0.9rem;
+  border-bottom: 1px solid transparent; transition: all 0.3s;
+}
+.link-arrow:hover { border-color: white; letter-spacing: 1px; }
+
+/* --- IMAGEN --- */
+.fluid-img {
+  width: 100%; height: 100%;
+  object-fit: cover; /* Se ajusta siempre */
+  transition: transform 1.5s ease; /* Zoom muy lento */
+}
+
+/* Zoom lento al hacer hover */
+.image-panel:hover .fluid-img { transform: scale(1.1); }
+
+/* Overlay y Texto Vertical */
+.image-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 1; transition: background 0.5s;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.image-panel:hover .image-overlay { background: rgba(0,0,0,0); /* Se quita lo oscuro al hover */ }
+
+.vertical-text {
+  writing-mode: vertical-rl; /* Texto vertical */
+  transform: rotate(180deg);
+  font-size: 4rem; font-weight: 800;
+  color: rgba(255, 255, 255, 0.1); /* Casi invisible */
+  text-transform: uppercase; letter-spacing: 10px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+
+/* --- EFECTO DE TEXTO TRANSFORMATIVO --- */
+
+/* Contenedor para evitar saltos bruscos de tamaño */
+.glitch-wrapper {
+  display: inline-block;
+  position: relative;
+  height: 1.1em; /* Reserva espacio */
+}
+
+.glitch-text {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-display); /* Fuente Original (Outfit) */
+  font-weight: 800;
+  color: transparent; /* Texto invisible, solo borde */
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all .55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ESTADO HOVER (La Transformación) */
+.glitch-text:hover {
+  font-family: --var (var(--font-display)); /* Cambia a Serif Elegante */
+  
+  color: #fff; /* Relleno blanco sólido */
+  -webkit-text-stroke: 0px; /* Sin borde */
+  
+  /* EL EFECTO DE LUZ (Glow) */
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.2);
+    
+  transform: scale(1.05) translateX(10px); /* Pequeño salto hacia la derecha */
+  letter-spacing: 0.05em; /* Se expande un poco */
+}
+
+/* Decoración extra: Una línea que aparece debajo */
+.glitch-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.s ease-in-out;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.glitch-text:hover::after {
   width: 100%;
+}
+
+
+:host {
+  --bg-black: #000000;       /* Negro Puro */
+  --card-surface: #0a0a0a;   /* Casi negro */
+  --text-white: #ffffff;     /* Blanco Puro (Legibilidad Máxima) */
+  --text-light-grey: #e5e5e5; /* Gris muy claro (Casi blanco) */
+  --border-dim: rgba(255, 255, 255, 0.15);
+  --border-bright: rgba(255, 255, 255, 0.8);
+  --font-main: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+.philosophy-grid {
+  background-color: var(--bg-black);
+  color: var(--text-white);
+  padding: 140px 0;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- HEADER --- */
+.grid-header {
+  margin-bottom: 80px;
+  max-width: 700px;
+}
+
+.grid-title {
+  font-family: var(--font-main);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: var(--text-white); /* Blanco sólido */
+}
+
+.serif-white {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.grid-desc {
+  font-size: 1.25rem;
+  color: var(--text-light-grey); /* Contraste alto */
+  line-height: 1.6;
+  font-weight: 300;
+  border-left: 1px solid var(--text-white); /* Línea decorativa izquierda */
+  padding-left: 20px;
+}
+
+/* --- CARDS GRID --- */
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.info-card {
+  background: var(--card-surface);
+  border: 1px solid var(--border-dim);
+  padding: 40px;
+  border-radius: 4px; /* Bordes casi rectos = Seriedad */
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%; /* Misma altura */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-.banner h1 {
-  padding: 0rem;
-  border-radius: 4px;
-  width: 70%;
-  text-align: left;
-  margin-left: -12rem;
+/* Efecto Hover: Borde blanco y fondo ligeramente más claro */
+.info-card:hover {
+  border-color: var(--text-white);
+  transform: translateY(-5px);
+  background: #111;
 }
 
-/* Sección de Valor */
-.valor,
-.valor2,
-.valor3 {
+/* --- ICONOS ABSTRACTOS CON CSS (Shapes) --- */
+.icon-box {
+  margin-bottom: 30px;
+  height: 50px;
+  width: 50px;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0));
-  padding: 2rem;
-  margin: 2rem auto;
-  border-radius: 8px;
-  max-width: 100%;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-  color: white; /* Asegura que el texto sea blanco */
-  animation: fadeIn 2s ease-in-out;
-  font-size: 1.6rem;
 }
 
-.valor h3,
-.valor2 h3,
-.valor3 h3 {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 1rem;
-  color: white; /* Asegura que el texto sea blanco */
+.shape-icon {
+  background: var(--text-white);
+  transition: transform 0.3s;
 }
 
-/* Textos de Valor */
-.valor p,
-.valor2 p,
-.valor3 p {
-  font-size: 1.2rem;
-  line-height: 1.8rem;
-  margin-right: 2rem;
-  text-align: justify;
-  width: 55%;
-  color: white; /* Asegura que el texto sea blanco */
+.circle-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 2px solid var(--text-white);
+  background: transparent;
+  position: relative;
+}
+.circle-icon::after {
+  content: ''; position: absolute; top: -5px; right: -5px;
+  width: 20px; height: 20px; background: var(--text-white); border-radius: 50%;
 }
 
-/* Imágenes */
-.foto2,
-.foto3,
-.foto4 {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  transition: transform 0.3s ease-in-out;
+.spark-icon {
+  width: 2px; height: 40px; background: var(--text-white);
+  position: relative; margin-left: 20px;
+}
+.spark-icon::before {
+  content: ''; position: absolute; top: 15px; left: -15px;
+  width: 30px; height: 2px; background: var(--text-white);
 }
 
-.foto2:hover,
-.foto3:hover,
-.foto4:hover {
-  transform: scale(1.05);
+.arrow-icon {
+  width: 0; height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid var(--text-white);
+  position: relative;
+}
+.arrow-icon::after {
+  content: ''; position: absolute; top: 20px; left: -2px;
+  width: 4px; height: 20px; background: var(--text-white);
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.info-card:hover .shape-icon {
+  transform: scale(1.1); /* Micro-interacción */
 }
 
-/* Responsive Styles */
-@media (max-width: 1024px) {
-  .introduccion,
-  .valor,
-  .valor2,
-  .valor3 {
-    width: 85%;
-  }
-  h1 {
-    font-size: 3.6rem;
-  }
-  .introduccion {
-    font-size: 1.4rem;
-  }
-  .valor p,
-  .valor2 p,
-  .valor3 p {
-    font-size: 1.4rem;
-  }
+/* --- TEXTOS DENTRO DE CARD --- */
+.info-card h3 {
+  font-family: var(--font-main);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-white);
 }
 
-@media (max-width: 768px) {
-  .container-home,
-  .valor,
-  .valor2,
-  .valor3 {
-    text-align: center;
-  }
-  .introduccion,
-  .valor p,
-  .valor2 p,
-  .valor3 p {
-    font-size: 1.2rem;
-  }
-  h1 {
-    font-size: 2.8rem;
-  }
-  .introduccion,
-  .valor p,
-  .valor2 p,
-  .valor3 p {
-    width: 90%;
-  }
-  .valor,
-  .valor2,
-  .valor3 {
-    flex-direction: column;
-    padding: 1.5rem;
-  }
+.info-card p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #cccccc; /* Gris muy claro para asegurar lectura */
+  font-weight: 300;
 }
 
-@media (max-width: 480px) {
-  h1 {
-    font-size: 2.4rem;
-  }
-  .introduccion,
-  .valor p,
-  .valor2 p,
-  .valor3 p {
-    font-size: 1rem;
-  }
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .grid-title { font-size: 2.5rem; }
+  .cards-wrapper { grid-template-columns: 1fr; }
+  .grid-desc { border-left: none; padding-left: 0; margin-top: 20px; }
 }
